@@ -10,13 +10,12 @@ import keras
 # TODO: fill out the function below that transforms the input series 
 # and window-size into a set of input/output pairs for use with our RNN model
 def window_transform_series(series, window_size):
-    # containers for input/output pairs
-    num_sequences = len(series)-window_size
+    # containers for input/output pairs    
+    step_size = 1
     X = []
-    for i in range(num_sequences):
-      inputs=np.array(series[i:i+window_size])
-      X.append(inputs)
     y = series[window_size:]
+    for i in range(0, len(series)-window_size, step_size):
+      X.append(np.array(series[i:i+window_size]))    
     
     # reshape each 
     X = np.asarray(X)
@@ -29,7 +28,7 @@ def window_transform_series(series, window_size):
 # TODO: build an RNN to perform regression on our time series input/output data
 def build_part1_RNN(window_size):
     model = Sequential()
-    model.add(LSTM(units=window_size, input_shape=(window_size, 1)))
+    model.add(LSTM(units=5, input_shape=(window_size, 1)))
     model.add(Dense(units=1, activation='sigmoid'))
     return model
 
@@ -51,7 +50,7 @@ def cleaned_text(text):
 ### TODO: fill out the function below that transforms the input text and window-size into a set of input/output pairs for use with our RNN model
 def window_transform_text(text, window_size, step_size):
     # containers for input/output pairs
-    num_sequences = int(np.ceil(len(text)/step_size))
+
     inputs = []
     outputs = text[slice(window_size,None,step_size)]
     for i in range(0, len(text)-window_size, step_size):
