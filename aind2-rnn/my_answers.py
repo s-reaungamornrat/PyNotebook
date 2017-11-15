@@ -2,7 +2,7 @@ import numpy as np
 
 from collections import Counter
 from keras.models import Sequential
-from keras.layers import Dense
+from keras.layers import Activation, Dense
 from keras.layers import LSTM
 import keras
 
@@ -29,7 +29,7 @@ def window_transform_series(series, window_size):
 def build_part1_RNN(window_size):
     model = Sequential()
     model.add(LSTM(units=5, input_shape=(window_size, 1)))
-    model.add(Dense(units=1, activation='sigmoid'))
+    model.add(Dense(units=1))
     return model
 
 
@@ -52,9 +52,11 @@ def window_transform_text(text, window_size, step_size):
     # containers for input/output pairs
 
     inputs = []
-    outputs = text[slice(window_size,None,step_size)]
+    outputs = []
+    #outputs = text[slice(window_size,None,step_size)]
     for i in range(0, len(text)-window_size, step_size):
       inputs.append(text[i:i+window_size])
+      outputs.append(text[i+window_size])
 
     return inputs,outputs
 
@@ -62,6 +64,6 @@ def window_transform_text(text, window_size, step_size):
 # a single LSTM hidden layer with softmax activation, categorical_crossentropy loss 
 def build_part2_RNN(window_size, num_chars):
     model = Sequential()
-    model.add(LSTM(units=window_size, input_shape=(window_size, num_chars)))
+    model.add(LSTM(units=200, input_shape=(window_size, num_chars)))
     model.add(Dense(units=num_chars, activation='softmax'))
     return model
