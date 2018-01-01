@@ -1,0 +1,16 @@
+Test..Awesome..Works..Cool..Awesome..Works..Good morning 
+20.98091 byeAwesome..PID: A 
+Label: 1 Good morning 
+PID: A 
+Label: 1  byePID: JA_SIEMENS, Label: 1
+	Best training score: 90.1264
+	Best kernel: Matern
+	Best length scale: 0.9129
+	Best length scale bound: [1, 10]
+
+
+PID: JA_SIEMENS, Label: 1
+	Best training score: 90.1264
+	Best kernel: Matern
+	Best length scale: 0.9129
+	Best length scale bound: [1, 10]
