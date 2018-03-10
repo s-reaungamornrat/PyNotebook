@@ -2,6 +2,8 @@ import copy
 import numpy as np
 from collections import deque
 
+debug = False
+
 def revise(D1, D2):
     
     #print('In Revise, D1 {}, D2 {}'.format(D1, D2))
@@ -22,7 +24,7 @@ def revise(D1, D2):
         else:
             revised_D1.append(d1)
             
-    if change: print('In Revise, Return changed D1 {}'.format(revised_D1))
+    if change and debug: print('In Revise, Return changed D1 {}'.format(revised_D1))
     return change, revised_D1
 
 def full_arc_consistency(edges, curr_domains, prev_domains):
@@ -44,7 +46,7 @@ def full_arc_consistency(edges, curr_domains, prev_domains):
         change, d = revise(ldomains[arc[0]], ldomains[arc[1]])
         if change:
             if len(d) == 0:
-                print('In FAC, Full arc consistency is violated, returned reversed domains ', prev_domains)
+                if debug: print('In FAC, Full arc consistency is violated, returned reversed domains ', prev_domains)
                 return False, prev_domains
             
             ldomains[arc[0]] = d
@@ -78,9 +80,9 @@ def directed_arc_consistency(vertices, v1, c1, v2, c2):
 def select_value_forward_checking(i, domains, vertices):
     
     ldomains = {k:copy.deepcopy(v) for k, v in domains.items()}
-    print('\n\nIn select_value_forward_checking, Copied domains ', ldomains)
+    if debug: print('\n\nIn select_value_forward_checking, Copied domains ', ldomains)
     domain = ldomains[i]
-    print('In select_value_forward_checking, Vertex {}, Domain {}'.format(i, domain))
+    if debug: print('In select_value_forward_checking, Vertex {}, Domain {}'.format(i, domain))
     while domain:
         #print('Domains ', ldomains)
         a_i,domain = select_value(domain)
@@ -90,17 +92,17 @@ def select_value_forward_checking(i, domains, vertices):
             domain = domain
             #print('-----Domain i ', domain)
         #print('Domains ', ldomains)
-        print('In select_value_forward_checking, Selected value ', a_i)
+        if debug: print('In select_value_forward_checking, Selected value ', a_i)
         invalid_assignment = False
         #print('In select_value_forward_checking, vertices[i].child_indices ', vertices[i].child_indices)
         for k in vertices[i].child_indices: 
-            print('-----In select_value_forward_checking, Domain {} of cidx {} in {}'.format(ldomains[k], k, vertices[i].child_indices))
+            if debug: print('-----In select_value_forward_checking, Domain {} of cidx {} in {}'.format(ldomains[k], k, vertices[i].child_indices))
             for a_k in ldomains[k]:
                 #print('\n------In select_value_forward_checking, value {} in domain {} of vertex {}'.format(a_k, ldomains[k], k))
-                print('\n------In select_value_forward_checking, between {} and {} : directed_arc_consistency ({},{}) is {}'.format(i, k ,a_i, a_k, directed_arc_consistency(vertices, i, a_i, k, a_k)))
+                if debug: print('\n------In select_value_forward_checking, between {} and {} : directed_arc_consistency ({},{}) is {}'.format(i, k ,a_i, a_k, directed_arc_consistency(vertices, i, a_i, k, a_k)))
                 if not directed_arc_consistency(vertices, i, a_i, k, a_k):
                     del ldomains[k][ldomains[k].index(a_k)]
-                    print('------In select_value_forward_checking, remove value {} in domain {}'.format(a_k, ldomains[k]))
+                    if debug: print('------In select_value_forward_checking, remove value {} in domain {}'.format(a_k, ldomains[k]))
             if len(ldomains[k]) == 0:
                 invalid_assignment = True
                 #print('In select_value_forward_checking, invalid assignment')
@@ -141,26 +143,27 @@ def reverse_domain(prev_domains, curr_domains, var, vertices):
     c = None
     if len(curr_domains[var]) > 0: c = curr_domains[var][0]
         
-    print('In reverse_domain, var {} assigned color {} '.format(var, c))
+    if debug: print('In reverse_domain, var {} assigned color {} '.format(var, c))
     idomain = copy.deepcopy(prev_domains[var])
     #print('In reverse_domain, Previous i domain ', idomain)
     if c != None:
         idomain.remove(c)
-        print('In reverse_domain, Remove c {} from i domain {}'.format(c, idomain))
+        if debug: print('In reverse_domain, Remove c {} from i domain {}'.format(c, idomain))
     curr_domains[var] = idomain    
     #print('In reverse_domain, var {} vertices {}'.format(var, vertices))
     for cv in vertices[var].child_indices:
         curr_domains[cv] = copy.deepcopy(prev_domains[cv])
-    print('In reverse_domain, Result domain {}'.format(curr_domains))
+    if debug: print('In reverse_domain, Result domain {}'.format(curr_domains))
     return curr_domains
         
 def dynamic_variable_forward_checking(graph):
     
-    print('In dynamic_variable_forward_checking, vertices ', graph.vertices)
-    print('In dynamic_variable_forward_checking, assignments ', graph.assignments)        
-    print('In dynamic_variable_forward_checking, degrees ', graph.degrees)
-    print('In dynamic_variable_forward_checking, domains ', graph.domains)    
-    
+    if debug:
+        print('In dynamic_variable_forward_checking, vertices ', graph.vertices)
+        print('In dynamic_variable_forward_checking, assignments ', graph.assignments)        
+        print('In dynamic_variable_forward_checking, degrees ', graph.degrees)
+        print('In dynamic_variable_forward_checking, domains ', graph.domains)    
+      
     #print('\n-------In dynamic_variable_forward_checking, assignemnets {}, length assignments {}, length vertices {}'.\
     #      format(graph.assignments, len(graph.assignments), len(graph.vertices)))
     
@@ -175,7 +178,7 @@ def dynamic_variable_forward_checking(graph):
     #print('In dynamic_variable_forward_checking, variables ', variables)
     
     flag, ldomains = full_arc_consistency(graph.edges, ldomains, ldomains)
-    print('In dynamic_variable_forward_checking, FAC is {} returned domain {}'.format(flag, ldomains))
+    if debug: print('In dynamic_variable_forward_checking, FAC is {} returned domain {}'.format(flag, ldomains))
     if not flag: return None
     
     i, num_vars = 0, len(graph.vertices)
@@ -187,36 +190,37 @@ def dynamic_variable_forward_checking(graph):
         
         #print('\nIn dynamic_variable_forward_checking, i {}, numvars {}'.format(i, num_vars))
         var = variables[i]
-        print('In dynamic_variable_forward_checking, start number {} with var {} in variables {}'.format(i, var, variables))
+        if debug: print('In dynamic_variable_forward_checking, start number {} with var {} in variables {}'.format(i, var, variables))
         
         if i == 0 and len(ldomains[var]) == 0:
-            print('In dynamic_variable_forward_checking, empty start node var {}'.format(var))
+            if debug: print('In dynamic_variable_forward_checking, empty start node var {}'.format(var))
             return None
         
         #if var in graph.assignments:
             #print('In dynamic_variable_forward_checking, Varible {} has already been assigned value {}'.format(var, graph.assignments[var]))
             #raise ValueError('Varible {} has already been assigned value {}'.format(var, graph.assignments[var]))
             
-        print('In dynamic_variable_forward_checking, {} call select_value_forward_checking with vertex {}'.format(i, var))
+        if debug: print('In dynamic_variable_forward_checking, {} call select_value_forward_checking with vertex {}'.format(i, var))
         domains, c = select_value_forward_checking(var, ldomains, graph.vertices)
-        print('In dynamic_variable_forward_checking, select_value_forward_checking returns color {} & domains {}'.format(c,domains))        
+        if debug: print('In dynamic_variable_forward_checking, select_value_forward_checking returns color {} & domains {}'.format(c,domains))        
         flag, domains = full_arc_consistency(graph.edges, domains, ldomains)
-        print('In dynamic_variable_forward_checking, Full arc consistency is {} returned domain {}'.format(flag, domains))
+        if debug: print('In dynamic_variable_forward_checking, Full arc consistency is {} returned domain {}'.format(flag, domains))
         if c == None or not flag:
             ldomains = reverse_domain(ldomains, domains, var, graph.vertices)
             ldomains_times[i] = ldomains
             #i-=1
             if len(ldomains[var]) == 0:
-                print('Assignments to be back track ', graph.assignments)
+                if debug: print('Assignments to be back track ', graph.assignments)
                 for k in range(i, len(variables)):
                     if variables[k] in graph.assignments: 
                         del graph.assignments[variables[k]]
-                print('Assignments ready for back track ', graph.assignments)
+                if debug: print('Assignments ready for back track ', graph.assignments)
                 i -= 1
-                print('In dynamic_variable_forward_checking, {} backtrack to {}'.format(i+1, i))  
-            else:
-                print('In dynamic_variable_forward_checking, {} check next color {} branch'.format(i, ldomains[var]))  
-            print('\n------------------------at i {}, domain is {}'.format(i, ldomains_times[i]))
+                if debug: print('In dynamic_variable_forward_checking, {} backtrack to {}'.format(i+1, i))  
+            elif debug:
+                print('In dynamic_variable_forward_checking, {} check next color {} branch'.format(i, ldomains[var])) 
+                
+            if debug: print('\n------------------------at i {}, domain is {}'.format(i, ldomains_times[i]))
             #print('All domains {}'.format(ldomains_times))
 
         else:
@@ -224,8 +228,9 @@ def dynamic_variable_forward_checking(graph):
             #if var in graph.assignments:
                 #raise ValueError('Vertex %d has already been assigned value' % var)
             graph.assignments[var] = c
-            print('In dynamic_variable_forward_checking, assign color {} to vertex {}'.format(c, var))
-            print('In dynamic_variable_forward_checking, assignments {}'.format(graph.assignments))
+            if debug: 
+                print('In dynamic_variable_forward_checking, assign color {} to vertex {}'.format(c, var))
+                print('In dynamic_variable_forward_checking, assignments {}'.format(graph.assignments))
             
             if is_all_assigned(graph.assignments, graph.vertices, variables):
                 return graph.assignments
@@ -233,21 +238,22 @@ def dynamic_variable_forward_checking(graph):
             # remove this selected value from the stored domian of var 
             if i >= 0:
                 ldomains_times[i][var].remove(c)
-                print('In dynamic_variable_forward_checking, var {} domain after assignment {}'.format(var, ldomains_times[i][var]))
+                if debug: print('In dynamic_variable_forward_checking, var {} domain after assignment {}'.format(var, ldomains_times[i][var]))
             if i < num_vars:
                 i+=1
                 v = graph.get_small_domain_var(ldomains)
                 if i < len(ldomains_times):
-                    print('i {} replace existing domain {} by {}'.format(i, ldomains_times[i], ldomains))
+                    if debug: print('i {} replace existing domain {} by {}'.format(i, ldomains_times[i], ldomains))
                     ldomains_times[i] = copy.deepcopy(ldomains)
                     variables[i] = v
                 else:
-                    print('i {} add domain {}'.format(i, ldomains))
+                    if debug: print('i {} add domain {}'.format(i, ldomains))
                     ldomains_times.append(copy.deepcopy(ldomains))
                     variables.append(v)
-                    
-                print('Local domains ', ldomains_times)
-                print('In dynamic_variable_forward_checking, next var {} with the smallest domain'.format(v))
+                
+                if debug:
+                    print('Local domains ', ldomains_times)
+                    print('In dynamic_variable_forward_checking, next var {} with the smallest domain'.format(v))
                 
     if i <= 0:
         return None

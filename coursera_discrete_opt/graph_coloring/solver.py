@@ -12,7 +12,7 @@ def solve_it(input_data):
     first_line = lines[0].split()
     node_count = int(first_line[0])
     edge_count = int(first_line[1])
-    #print('Node count %d, edge count %d' % (node_count, edge_count))
+
 
     edges = []
     for i in range(1, edge_count + 1):
@@ -20,21 +20,18 @@ def solve_it(input_data):
         parts = line.split()
         edges.append((int(parts[0]), int(parts[1])))
         
-    #### play with graph
-    graph = Graph()
-    graph.set_edges(edges)
-    #graph.print_graph()
-    #print('---------------Start graph coloring ------------------')
-    num_colors, solution, vertices, color_frequency = graph_coloring(graph.vertices)
-    #print('In graph coloring, vertices')
-    #print_graph(vertices)
-    #print('Vertices ', vertices)
-    vertex_colors = [(v.index, v.color) for k, v in vertices.items()]
-    #print('Vertex color', [(v.index, v.color) for v in vertices])
+    graph = Graph(edges)
+    degrees = graph.get_degrees()
     
-    #######
-    # build a trivial solution
-    # every node has its own color
+    initial_domain = list(range(max(degrees)))
+    #print('\nFilename {}_{}: initial domain{}'.format(num_node, affix, initial_domain))
+    graph.set_initial_domains(initial_domain)
+    assignments = dynamic_variable_forward_checking(graph)
+    
+    solution = []
+    for i, v in graph.vertices.items():
+        solution.append(assignments[v.index])
+    num_colors = len(set(solution))
 
     # prepare the solution in the specified output format
     output_data = str(num_colors) + ' ' + str(0) + '\n'

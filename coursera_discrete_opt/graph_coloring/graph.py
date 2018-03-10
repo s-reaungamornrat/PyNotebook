@@ -119,7 +119,7 @@ class Graph:
             if d > deg: 
                 deg = d
                 var = i
-        print('In get_high_degree_var, var {} deg {}'.format(var, deg))
+        #print('In get_high_degree_var, var {} deg {}'.format(var, deg))
         return var
     
     def get_small_domain_var(self, cdomains=None, deg_break_ties=True):
@@ -148,18 +148,18 @@ class Graph:
             if sorted_dsizes[i-1] == sorted_dsizes[i]:
                 if deg_break_ties:
                     if self.degrees[idj] >= self.degrees[idk]: 
-                        print('-------In graph.get_small_domain_var, vertex {} degree {} >= {}'.format(idj, self.degrees[idj], self.degrees[idk]))
+                        #print('-------In graph.get_small_domain_var, vertex {} degree {} >= {}'.format(idj, self.degrees[idj], self.degrees[idk]))
                         return idj
                     else:
-                        print('-------In graph.get_small_domain_var, vertex {} degree {} >= {}'.format(idk, self.degrees[idk], self.degrees[idj]))
+                        #print('-------In graph.get_small_domain_var, vertex {} degree {} >= {}'.format(idk, self.degrees[idk], self.degrees[idj]))
                         return idk
                 else: 
-                    print('------In graph.get_small_domain_var, vertex {} size {} <= {}'.format(idj, sorted_dsizes[i-1], sorted_dsizes[i-1]))
+                    #print('------In graph.get_small_domain_var, vertex {} size {} <= {}'.format(idj, sorted_dsizes[i-1], sorted_dsizes[i-1]))
                     return idj
             else:
                 return idj
                 
-        print('In graph.get_small_domain_var, indices {}, domain size {}'.format(idj, cdomains))
+        #print('In graph.get_small_domain_var, indices {}, domain size {}'.format(idj, cdomains))
         
         return idj
                             

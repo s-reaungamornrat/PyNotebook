@@ -37,7 +37,7 @@ def write_assignments(filename, infile, assignments):
         
 if __name__ == '__main__':
   
-  data_folder = 'C:/D/coursera/discrete_opt/coloring/data'
+  data_folder = './data'
   num_nodes = [20, 50, 70, 100, 250, 500, 1000]
   affixes = [1,3,5,7,9]
   
@@ -52,13 +52,11 @@ if __name__ == '__main__':
       graph = Graph(edges)
       degrees = graph.get_degrees()
       
-      assignments = None
-      for max_c in range(3, max(degrees)):
-        initial_domain = list(range(max_c))
-        print('\nFilename {}_{}: initial domain{}'.format(num_nodes[n], affixes[a], initial_domain))
-        graph.set_initial_domains(initial_domain)
-        assignments = dynamic_variable_forward_checking(graph)
-        if assignments: break
+
+      initial_domain = list(range(max(degrees)))
+      print('\nFilename {}_{}: initial domain{}'.format(num_nodes[n], affixes[a], initial_domain))
+      graph.set_initial_domains(initial_domain)
+      assignments = dynamic_variable_forward_checking(graph)
       
       if assignments:
         infile = '_'.join([str(num_nodes[n]), str(affixes[a])])
