@@ -21,6 +21,9 @@ def read_edges(filename):
       #print(vertices)
       if len(vertices): edges.append((int(vertices[0]), int(vertices[1])))
   
+  for e in edges:
+      print('{} {}'.format(e[0], e[1]))
+      
   return node_cnt, edge_cnt, edges
 
 def write_assignments(filename, infile, assignments):
@@ -35,11 +38,21 @@ def write_assignments(filename, infile, assignments):
     writer.writerow(colors)
     
         
+def check_consistence_constraint(graph, assignments):
+    
+    for idx, color in assignments.items():
+        child_colors = [assignments[cidx] for cidx in graph.vertices[idx].child_indices]
+        #print('\nIn check_consistence_constraint')
+        print('Vertex {} assigned color {} connected vertices {} with corresponding colors {}'.format(idx, color, graph.vertices[idx].child_indices, child_colors))
+        if color in child_colors:
+            raise ValueError('Error : Arc consistence is violated')
+    return True
+    
 if __name__ == '__main__':
   
   data_folder = './data'
-  num_node = 20
-  affix = 9
+  num_node = 50
+  affix = 3
   
   filename = os.path.join(data_folder, ''.join(['gc_', str(num_node), '_', str(affix)]))
   
@@ -53,7 +66,9 @@ if __name__ == '__main__':
   print('\nFilename {}_{}: initial domain{}'.format(num_node, affix, initial_domain))
   graph.set_initial_domains(initial_domain)
   assignments = dynamic_variable_forward_checking(graph)
-  
+  satisfied = check_consistence_constraint(graph, assignments)
+  if not satisfied:
+      print('No Solution Found')
   assignment_list = []
   for i, v in graph.vertices.items():
       assignment_list.append(assignments[v.index])

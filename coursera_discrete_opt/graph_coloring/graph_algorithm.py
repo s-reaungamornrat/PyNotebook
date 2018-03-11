@@ -101,8 +101,8 @@ def select_value_forward_checking(i, domains, vertices):
                 #print('\n------In select_value_forward_checking, value {} in domain {} of vertex {}'.format(a_k, ldomains[k], k))
                 if debug: print('\n------In select_value_forward_checking, between {} and {} : directed_arc_consistency ({},{}) is {}'.format(i, k ,a_i, a_k, directed_arc_consistency(vertices, i, a_i, k, a_k)))
                 if not directed_arc_consistency(vertices, i, a_i, k, a_k):
-                    del ldomains[k][ldomains[k].index(a_k)]
-                    if debug: print('------In select_value_forward_checking, remove value {} in domain {}'.format(a_k, ldomains[k]))
+                    ldomains[k].remove(a_k)
+                    if debug: print('------In select_value_forward_checking, remove value {} so not exist in domain {}'.format(a_k, ldomains[k]))
             if len(ldomains[k]) == 0:
                 invalid_assignment = True
                 #print('In select_value_forward_checking, invalid assignment')
@@ -206,7 +206,10 @@ def dynamic_variable_forward_checking(graph):
         flag, domains = full_arc_consistency(graph.edges, domains, ldomains)
         if debug: print('In dynamic_variable_forward_checking, Full arc consistency is {} returned domain {}'.format(flag, domains))
         if c == None or not flag:
-            ldomains = reverse_domain(ldomains, domains, var, graph.vertices)
+            domains = reverse_domain(ldomains, domains, var, graph.vertices)
+            flag, ldomains = full_arc_consistency(graph.edges, domains, ldomains)
+            if debug and not flag:
+                print('In dynamic_variable_forward_checking, domain inconsistence {} after reverse domain fixed to {}'.format(domains, ldomains))
             ldomains_times[i] = ldomains
             #i-=1
             if len(ldomains[var]) == 0:
@@ -233,7 +236,12 @@ def dynamic_variable_forward_checking(graph):
                 print('In dynamic_variable_forward_checking, assignments {}'.format(graph.assignments))
             
             if is_all_assigned(graph.assignments, graph.vertices, variables):
-                return graph.assignments
+                flag, ldomains = full_arc_consistency(graph.edges, ldomains, ldomains)
+                if not flag:
+                    print('\n\nIn dynamic_variable_forward_checking, Complete assignment is not consistence')
+                    return False
+                else:
+                    return graph.assignments
                 
             # remove this selected value from the stored domian of var 
             if i >= 0:

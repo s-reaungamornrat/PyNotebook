@@ -71,6 +71,7 @@ class Graph:
         #print('In set_initial_domains, All domains ', self.domains)
 
     def add_vertex(self, vertex, child):
+        print('\nIn graph.add_vertex, vertex {}, child {}'.format(vertex, child))
         if vertex in self.vertices:
             self.vertices[vertex].degree +=1
             self.vertices[vertex].child_indices.add(child)
@@ -81,6 +82,7 @@ class Graph:
             self.vertices[vertex].child_indices.add(child)
             #print('Add vertex {}, degree {}, children {}'.format(vertex, self.vertices[vertex].degree,\
             #                                                     self.vertices[vertex].child_indices))
+        print('In graph.add_vertex, vertex  node {}, \nchildren {}'.format(self.vertices[vertex] , self.vertices[vertex].child_indices))
         
     def set_edges(self, edges):
 
