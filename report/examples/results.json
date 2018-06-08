@@ -1,0 +1,533 @@
+{
+    "experiment_title":"An Experiment",
+    "measurements":"./examples/AAPL.csv",
+    "0":{
+        "fixed":{
+            "header":"Fixed Image",
+            "type":"image",
+            "path":"./20170830_figs/deformed_atlas_w_curve_CC_0019.png"
+        },
+        "moving":{
+            "header":"Moving Image",
+            "type":"image",
+            "path":"./20180115_figs/rigid_atlas_w_curve_CC_0017.png"
+        },
+        "measure_uid":"28402800A",
+        "result_img":{
+            "header":"Result Image",
+            "type":"image",
+            "path":"./results_images/some_images.PNG"
+        },
+        "video":{
+            "header":"Registration",
+            "type":"video",
+            "path":"./movies/movie.mp4"
+        }
+    },
+    "1":{
+        "fixed":{
+            "header":"Fixed Image",
+            "type":"image",
+            "path":"./20170830_figs/overall_tre_CC_0014.png"
+        },
+        "moving":{
+            "header":"Moving Image",
+            "type":"image",
+            "path":"./20170830_figs/overall_tre_CC_0016.png"
+        },
+        "measure_uid":"23211200B",
+        "result_img":{
+            "header":"Result Image",
+            "type":"image",
+            "path":"./results_images/more_images.PNG"
+        },
+        "video":{
+            "header":"Registration",
+            "type":"video",
+            "path":"./movies/movie.mp4"
+        }
+    },
+    "2":{
+        "fixed":{
+            "header":"Fixed Image",
+            "type":"image",
+            "path":"./20170830_figs/overall_tre_CC_0016.png"
+        },
+        "moving":{
+            "header":"Moving Image",
+            "type":"image",
+            "path":"./20180115_figs/deformed_atlas_w_curve_CC_0010.png"
+        },
+        "measure_uid":"27989300C",
+        "result_img":{
+            "header":"Result Image",
+            "type":"image",
+            "path":"./results_images/another_images.PNG"
+        },
+        "video":{
+            "header":"Registration",
+            "type":"video",
+            "path":"./movies/movie.mp4"
+        }
+    },
+    "3":{
+        "fixed":{
+            "header":"Fixed Image",
+            "type":"image",
+            "path":"./20170830_figs/deformed_atlas_w_curve_CC_0005.png"
+        },
+        "moving":{
+            "header":"Moving Image",
+            "type":"image",
+            "path":"./20180115_figs/P1092977057_manual_seg_all_curve.png"
+        },
+        "measure_uid":"26212200D",
+        "result_img":{
+            "header":"Result Image",
+            "type":"image",
+            "path":"./results_images/backup_diagram_q_pi.PNG"
+        },
+        "video":{
+            "header":"Registration",
+            "type":"video",
+            "path":"./movies/mov_bbb.mp4"
+        }
+    },
+    "4":{
+        "fixed":{
+            "header":"Fixed Image",
+            "type":"image",
+            "path":"./20170830_figs/rigid_atlas_w_curve_CC_0016.png"
+        },
+        "moving":{
+            "header":"Moving Image",
+            "type":"image",
+            "path":"./20180115_figs/overall_tre_CC_0009.png"
+        },
+        "measure_uid":"20778800E",
+        "result_img":{
+            "header":"Result Image",
+            "type":"image",
+            "path":"./results_images/backup_diagram_v_pi.PNG"
+        },
+        "video":{
+            "header":"Registration",
+            "type":"video",
+            "path":"./movies/mov_bbb.mp4"
+        }
+    },
+    "5":{
+        "fixed":{
+            "header":"Fixed Image",
+            "type":"image",
+            "path":"./20170830_figs/deformed_atlas_w_curve_CC_0017.png"
+        },
+        "moving":{
+            "header":"Moving Image",
+            "type":"image",
+            "path":"./20180115_figs/overall_tre_CC_0014.png"
+        },
+        "measure_uid":"23695200F",
+        "result_img":{
+            "header":"Result Image",
+            "type":"image",
+            "path":"./results_images/one_more.PNG"
+        },
+        "video":{
+            "header":"Registration",
+            "type":"video",
+            "path":"./movies/movie.mp4"
+        }
+    },
+    "6":{
+        "fixed":{
+            "header":"Fixed Image",
+            "type":"image",
+            "path":"./20170830_figs/rigid_atlas_w_curve_CC_0020.png"
+        },
+        "moving":{
+            "header":"Moving Image",
+            "type":"image",
+            "path":"./20180115_figs/P1092977057_andrew_flattened.png"
+        },
+        "measure_uid":"19183100G",
+        "result_img":{
+            "header":"Result Image",
+            "type":"image",
+            "path":"./results_images/backup_diagram_v_pi.PNG"
+        },
+        "video":{
+            "header":"Registration",
+            "type":"video",
+            "path":"./movies/movie.mp4"
+        }
+    },
+    "7":{
+        "fixed":{
+            "header":"Fixed Image",
+            "type":"image",
+            "path":"./20170830_figs/deformed_atlas_w_curve_CC_0012.png"
+        },
+        "moving":{
+            "header":"Moving Image",
+            "type":"image",
+            "path":"./20180115_figs/rigid_atlas_w_curve_CC_0012.png"
+        },
+        "measure_uid":"17294000H",
+        "result_img":{
+            "header":"Result Image",
+            "type":"image",
+            "path":"./results_images/some_images.PNG"
+        },
+        "video":{
+            "header":"Registration",
+            "type":"video",
+            "path":"./movies/movie.mp4"
+        }
+    },
+    "8":{
+        "fixed":{
+            "header":"Fixed Image",
+            "type":"image",
+            "path":"./20170830_figs/overall_tre_CC_0012.png"
+        },
+        "moving":{
+            "header":"Moving Image",
+            "type":"image",
+            "path":"./20180115_figs/overall_tre_CC_0019.png"
+        },
+        "measure_uid":"18297700I",
+        "result_img":{
+            "header":"Result Image",
+            "type":"image",
+            "path":"./results_images/backup_diagram_q_pi.PNG"
+        },
+        "video":{
+            "header":"Registration",
+            "type":"video",
+            "path":"./movies/movie.mp4"
+        }
+    },
+    "9":{
+        "fixed":{
+            "header":"Fixed Image",
+            "type":"image",
+            "path":"./20170830_figs/overall_tre_CC_0009.png"
+        },
+        "moving":{
+            "header":"Moving Image",
+            "type":"image",
+            "path":"./20180115_figs/P1092977057_manual_seg_slice1.png"
+        },
+        "measure_uid":"18400800J",
+        "result_img":{
+            "header":"Result Image",
+            "type":"image",
+            "path":"./results_images/another_images.PNG"
+        },
+        "video":{
+            "header":"Registration",
+            "type":"video",
+            "path":"./movies/mov_bbb.mp4"
+        }
+    },
+    "10":{
+        "fixed":{
+            "header":"Fixed Image",
+            "type":"image",
+            "path":"./20170830_figs/overall_tre_CC_0020.png"
+        },
+        "moving":{
+            "header":"Moving Image",
+            "type":"image",
+            "path":"./20180115_figs/P1092977057_manual_seg_slice32.png"
+        },
+        "measure_uid":"15240700K",
+        "result_img":{
+            "header":"Result Image",
+            "type":"image",
+            "path":"./results_images/backup_diagram_q_pi.PNG"
+        },
+        "video":{
+            "header":"Registration",
+            "type":"video",
+            "path":"./movies/mov_bbb.mp4"
+        }
+    },
+    "11":{
+        "fixed":{
+            "header":"Fixed Image",
+            "type":"image",
+            "path":"./20170830_figs/deformed_atlas_w_curve_CC_0005.png"
+        },
+        "moving":{
+            "header":"Moving Image",
+            "type":"image",
+            "path":"./20180115_figs/deformed_atlas_w_curve_CC_0006_.png"
+        },
+        "measure_uid":"19467900L",
+        "result_img":{
+            "header":"Result Image",
+            "type":"image",
+            "path":"./results_images/another_images.PNG"
+        },
+        "video":{
+            "header":"Registration",
+            "type":"video",
+            "path":"./movies/movie.mp4"
+        }
+    },
+    "12":{
+        "fixed":{
+            "header":"Fixed Image",
+            "type":"image",
+            "path":"./20170830_figs/overall_tre_CC_0016.png"
+        },
+        "moving":{
+            "header":"Moving Image",
+            "type":"image",
+            "path":"./20180115_figs/deformed_atlas_w_curve_CC_0020.png"
+        },
+        "measure_uid":"20401000M",
+        "result_img":{
+            "header":"Result Image",
+            "type":"image",
+            "path":"./results_images/backup_diagram_q_pi.PNG"
+        },
+        "video":{
+            "header":"Registration",
+            "type":"video",
+            "path":"./movies/mov_bbb.mp4"
+        }
+    },
+    "13":{
+        "fixed":{
+            "header":"Fixed Image",
+            "type":"image",
+            "path":"./20170830_figs/rigid_atlas_w_curve_CC_0009.png"
+        },
+        "moving":{
+            "header":"Moving Image",
+            "type":"image",
+            "path":"./20180115_figs/lmi_ffd.png"
+        },
+        "measure_uid":"17461000N",
+        "result_img":{
+            "header":"Result Image",
+            "type":"image",
+            "path":"./results_images/another_images.PNG"
+        },
+        "video":{
+            "header":"Registration",
+            "type":"video",
+            "path":"./movies/mov_bbb.mp4"
+        }
+    },
+    "14":{
+        "fixed":{
+            "header":"Fixed Image",
+            "type":"image",
+            "path":"./20170830_figs/rigid_atlas_w_curve_CC_0017.png"
+        },
+        "moving":{
+            "header":"Moving Image",
+            "type":"image",
+            "path":"./20180115_figs/P1092977057_manual_seg_all_flattened.png"
+        },
+        "measure_uid":"22369000O",
+        "result_img":{
+            "header":"Result Image",
+            "type":"image",
+            "path":"./results_images/backup_diagram_q_pi.PNG"
+        },
+        "video":{
+            "header":"Registration",
+            "type":"video",
+            "path":"./movies/movie.mp4"
+        }
+    },
+    "15":{
+        "fixed":{
+            "header":"Fixed Image",
+            "type":"image",
+            "path":"./20170830_figs/overall_tre_CC_0005.png"
+        },
+        "moving":{
+            "header":"Moving Image",
+            "type":"image",
+            "path":"./20180115_figs/overall_tre_CC_0014.png"
+        },
+        "measure_uid":"18690500P",
+        "result_img":{
+            "header":"Result Image",
+            "type":"image",
+            "path":"./results_images/another_images.PNG"
+        },
+        "video":{
+            "header":"Registration",
+            "type":"video",
+            "path":"./movies/mov_bbb.mp4"
+        }
+    },
+    "16":{
+        "fixed":{
+            "header":"Fixed Image",
+            "type":"image",
+            "path":"./20170830_figs/deformed_atlas_w_curve_CC_0019.png"
+        },
+        "moving":{
+            "header":"Moving Image",
+            "type":"image",
+            "path":"./20180115_figs/deformed_atlas_w_curve_CC_0010.png"
+        },
+        "measure_uid":"27482800Q",
+        "result_img":{
+            "header":"Result Image",
+            "type":"image",
+            "path":"./results_images/one_more.PNG"
+        },
+        "video":{
+            "header":"Registration",
+            "type":"video",
+            "path":"./movies/movie.mp4"
+        }
+    },
+    "17":{
+        "fixed":{
+            "header":"Fixed Image",
+            "type":"image",
+            "path":"./20170830_figs/overall_tre_CC_0014.png"
+        },
+        "moving":{
+            "header":"Moving Image",
+            "type":"image",
+            "path":"./20180115_figs/P1092977057_manual_seg_slice128.png"
+        },
+        "measure_uid":"23250400R",
+        "result_img":{
+            "header":"Result Image",
+            "type":"image",
+            "path":"./results_images/some_images.PNG"
+        },
+        "video":{
+            "header":"Registration",
+            "type":"video",
+            "path":"./movies/movie.mp4"
+        }
+    },
+    "18":{
+        "fixed":{
+            "header":"Fixed Image",
+            "type":"image",
+            "path":"./20170830_figs/deformed_atlas_w_curve_CC_0018.png"
+        },
+        "moving":{
+            "header":"Moving Image",
+            "type":"image",
+            "path":"./20180115_figs/deformed_atlas_w_curve_CC_0017.png"
+        },
+        "measure_uid":"26132000S",
+        "result_img":{
+            "header":"Result Image",
+            "type":"image",
+            "path":"./results_images/backup_diagram_q_pi.PNG"
+        },
+        "video":{
+            "header":"Registration",
+            "type":"video",
+            "path":"./movies/mov_bbb.mp4"
+        }
+    },
+    "19":{
+        "fixed":{
+            "header":"Fixed Image",
+            "type":"image",
+            "path":"./20170830_figs/overall_tre_CC_0020.png"
+        },
+        "moving":{
+            "header":"Moving Image",
+            "type":"image",
+            "path":"./20180115_figs/deformed_atlas_w_curve_CC_0018.png"
+        },
+        "measure_uid":"21566000T",
+        "result_img":{
+            "header":"Result Image",
+            "type":"image",
+            "path":"./results_images/one_more.PNG"
+        },
+        "video":{
+            "header":"Registration",
+            "type":"video",
+            "path":"./movies/mov_bbb.mp4"
+        }
+    },
+    "20":{
+        "fixed":{
+            "header":"Fixed Image",
+            "type":"image",
+            "path":"./20170830_figs/deformed_atlas_w_curve_CC_0011.png"
+        },
+        "moving":{
+            "header":"Moving Image",
+            "type":"image",
+            "path":"./20180115_figs/overall_tre_CC_0018.png"
+        },
+        "measure_uid":"20933600U",
+        "result_img":{
+            "header":"Result Image",
+            "type":"image",
+            "path":"./results_images/backup_diagram_v_pi.PNG"
+        },
+        "video":{
+            "header":"Registration",
+            "type":"video",
+            "path":"./movies/movie.mp4"
+        }
+    },
+    "21":{
+        "fixed":{
+            "header":"Fixed Image",
+            "type":"image",
+            "path":"./20170830_figs/rigid_atlas_w_curve_CC_0013.png"
+        },
+        "moving":{
+            "header":"Moving Image",
+            "type":"image",
+            "path":"./20180115_figs/rigid_atlas_w_curve_CC_0006_.png"
+        },
+        "measure_uid":"21222500V",
+        "result_img":{
+            "header":"Result Image",
+            "type":"image",
+            "path":"./results_images/some_images.PNG"
+        },
+        "video":{
+            "header":"Registration",
+            "type":"video",
+            "path":"./movies/movie.mp4"
+        }
+    },
+    "22":{
+        "fixed":{
+            "header":"Fixed Image",
+            "type":"image",
+            "path":"./20170830_figs/rigid_atlas_w_curve_CC_0018.png"
+        },
+        "moving":{
+            "header":"Moving Image",
+            "type":"image",
+            "path":"./20180115_figs/rigid_atlas_w_curve_CC_0013.png"
+        },
+        "measure_uid":"11499147W",
+        "result_img":{
+            "header":"Result Image",
+            "type":"image",
+            "path":"./results_images/another_images.PNG"
+        },
+        "video":{
+            "header":"Registration",
+            "type":"video",
+            "path":"./movies/mov_bbb.mp4"
+        }
+    }
+}

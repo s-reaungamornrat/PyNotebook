@@ -1,0 +1,70 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300|Roboto:400,100,100italic,400italic);
+
+<!--#content {max-width: 1000px;}-->
+
+header {
+    line-height: 2;
+}
+.banner-image {
+  background-image: url("../images/white_siemens.png");
+  height: 12%;
+  width: 12%;
+  margin: 0 10px auto auto;
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: relative;
+  overflow: hidden;
+}
+html {
+    height: 100%;
+    margin: 0 0 auto auto;  <!-- top right bottom left>
+}
+body {
+    margin: 0 0 auto 50px;
+    color: : lightgray;
+    background-color: #303030;
+    font-family: arial;
+}
+th {
+    display: table-cell;
+    vertical-align: inherit;
+    font-weight: bold;
+    color: #DCDCDC;
+    padding: 6px;
+}        
+td {
+    color: #DCDCDC;  
+    padding: 6px;
+}
+h1 {
+  margin: auto;
+  text-align: center;
+  color: #C0C0C0;
+}
+h2,h3 {
+    margin: auto;
+    line-height: 3;
+    color: #C0C0C0;
+}
+div {
+    margin: auto;
+}
+p  {
+    color: whitesmoke;
+    font-size: 20%;
+}
+a { 
+    color: #dd4814; 
+    text-decoration: none; 
+}
+/* resize images */
+.img-icon {
+    width: 100px;
+    height: 100px; <!--auto--;>
+}
+
+video {
+    width: 100px;
+    height: 100px;
+}
