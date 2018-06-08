@@ -1,0 +1,20 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300|Roboto:400,100,100italic,400italic);
+
+header, #content {
+    margin: auto;
+    max-width: 780px;
+}
+header h1 {
+    line-height: 1;
+}
+body {
+    background: dimgray;
+    color: lightgrey;
+    font-family: Roboto, sans-serif;
+    padding: 10px 12.5%;
+    font-size: 1.2em;
+}
+a { color: #dd4814; text-decoration: none; }
+#content {
+    padding: 10px 30px;
+}

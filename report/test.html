@@ -1,0 +1,230 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kryogenix Consulting</title>
+<link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,300|Roboto:400,300,100,100italic,400italic'
+    rel='stylesheet' type='text/css'>
+<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="me" href="https://twitter.com/sil" />
+<link rel="me" href="https://github.com/stuartlangridge" />
+<link rel="webmention" href="https://webmention.herokuapp.com/api/webmention" />
+<style>
+html, body, article, nav, ul, li {
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, sans-serif;
+}
+#basic {
+    background-color: black;
+    color: white;
+    padding-bottom: 50px;
+    background-image: -moz-radial-gradient(center, ellipse cover, rgba(0,0,0,0.3) 0%,rgba(0,0,0,1) 100%), url(images/frontpage/background-binary-tile-nav.png), url(images/frontpage/background-binary-tile.png);
+    background-image: -webkit-radial-gradient(center, ellipse cover, rgba(0,0,0,0.3) 0%,rgba(0,0,0,1) 100%), url(images/frontpage/background-binary-tile-nav.png), url(images/frontpage/background-binary-tile.png);
+    background-image: radial-gradient(ellipse at center, rgba(0,0,0,0.3) 0%,rgba(0,0,0,1) 100%), url(images/frontpage/background-binary-tile-nav.png), url(images/frontpage/background-binary-tile.png);
+    background-size: auto, 16.66%, 16.66%;
+    background-repeat: no-repeat, repeat-x, repeat;
+    background-position: center center, left 120px, top left;
+}
+a {
+    color: #dd4814;
+    text-decoration: none;
+}
+
+nav {
+    height: 120px;
+}
+nav li {
+    float: left;
+    list-style: none;
+    margin-top: 50px;
+    text-transform: uppercase;
+    width: 16.66%;
+}
+nav li:nth-child(1) { width: 33.33%; margin-left: 16.66%; }
+nav a {
+    color: #606060;
+    text-transform: lowercase;
+}
+nav a span {
+    text-transform: lowercase;
+    font-size: 90%;
+    color: #dd4814;
+}
+#home { text-transform: uppercase; visibility: hidden; }
+h1 {
+    clear: left;
+    color: #dd4814;
+    letter-spacing: 0.1em;
+    font-size: 5em;
+    margin-top: 40px;
+    margin-bottom: 0;
+    padding: 0;
+
+    /* sin, sin, sin */
+    -webkit-transform: translateX(-4px);
+    -moz-transform: translateX(-4px);
+    transform: translateX(-4px);
+}
+h2 {
+    margin-top: -15px;
+    color: #606060;
+    letter-spacing: 0.05em;
+    padding: 0;
+}
+p {
+    font-weight: 100;
+    font-size: 2.75em;
+    width: 64%;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+}
+h1, h2, p {
+    margin-left: 16.66%;
+}
+h1, h2 {
+    text-transform: uppercase;
+    font-family: "Roboto Condensed";
+    font-weight: 300;
+}
+
+#me {
+    background: url(images/frontpage/bigbwme.jpg) center center;
+    background-size: cover;
+    min-height: 800px;
+    position: relative;
+}
+#me h1 {
+    font-family: Roboto, sans-serif;
+    margin: 0;
+    color: white;
+    text-transform: none;
+    font-size: 2.75em;
+    font-weight: 100;
+    letter-spacing: 0;
+    padding: 100px 0 0 16.66%;
+}
+#me a {
+    position: absolute;
+    left: 16.66%;
+    width: 50%;
+    bottom: 60px;
+    display: block;
+    font-size: 2.75em;
+    font-weight: 100;
+}
+
+article.band {
+    min-height: 250px;
+    margin: 0; padding: 0;
+}
+article.band:before { /* http://css-tricks.com/centering-in-the-unknown/ */
+    content: "";
+    display: inline-block;
+    min-height: 250px;
+    vertical-align: middle;
+}
+article.band p {
+    display: inline-block;
+    vertical-align: middle;
+    width: 45%;
+    margin: 0;
+    padding: 0 5% 0 16.66%;
+    font-size: 2.75em;
+    font-weight: 100;
+}
+article.band p.img {
+    width: 16%;
+    padding: 0 16% 0 0;
+    text-align: center;
+}
+article.band:nth-child(2n+1) {
+    background: black;
+    color: white;
+}
+article.band:nth-child(2n) img.black { display: block; }
+article.band:nth-child(2n) img.white { display: none; }
+article.band:nth-child(2n+1) img.black { display: none; }
+article.band:nth-child(2n+1) img.white { display: block; }
+
+article.talk small {
+    display: block;
+    font-size: 70%;
+}
+article.talk p {
+    width: 83.33%;
+    margin: 0;
+    padding: 0 0 0 16.66%;
+    box-sizing: border-box;
+}
+
+@media (max-width: 950px) {
+    article.band p.img img {
+        height: 70px;
+    }
+    article#me {
+        min-height: 400px;
+    }
+}
+
+
+@media (max-width: 600px) {
+    nav li {
+        float: right;
+        text-align: right;
+        width: 90%;
+        margin: 0 10% 0 0;
+    }
+    h1 {
+        font-size: 3em;
+        margin-bottom: 10px;
+        margin-left: 10%;
+        margin-top: 0px;
+        -webkit-transform: translateX(-2px);
+        -moz-transform: translateX(-2px);
+        transform: translateX(-2px);
+    }
+    h2 {
+        margin-left: 10%;
+        width: 80%;
+    }
+    p {
+        margin-left: 10%;
+        font-size: 1.5em;
+        width: 80%;
+    }
+    article.band p {
+        font-size: 1.5em;
+        padding: 0 5% 0 10%;
+    }
+    article.band p.img img {
+        height: 40px;
+    }
+    article#me {
+        min-height: 400px;
+        background-image: url(images/frontpage/smallbwme.jpg);
+    }
+    #me a {
+        left: 10%;
+        width: 80%;
+        font-size: 1.5em;
+    }
+    #basic {
+        background-position: center center, left 95px, top left;
+    }
+    nav {
+        height: 95px;
+    }
+}
+
+
+</style>
+</head>
+<body>
+        <h1>2014 technology and CPG stock prices</h1>
+
+        <!-- *** Section 1 *** --->
+        <h2>Section 1: 2014 AAPL</h2>
+        <h3>Summary table: 2014 stock statistics</h3>
+</body>
+</html>
