@@ -1,5 +1,6 @@
 import os
 import sys
+import ntpath
 import json
 import pandas as pd
 import pprint
@@ -43,7 +44,7 @@ def result_dataframe(data):
             
     return pd.DataFrame(result_dict)
   
-def generate_html(experiment_title, html_file, dataframe):
+def generate_html(experiment_title, html_file, dataframe, css_style='staticpages.css'):
     table = dataframe.to_html(notebook=False, escape=False, justify='left', col_space=20,
           max_rows=1000, max_cols=1000).replace('<table border="1" class="dataframe">','<table class="sortable">')
     
@@ -52,7 +53,7 @@ def generate_html(experiment_title, html_file, dataframe):
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../styles/staticpages.css" type="text/css">
+        <link rel="stylesheet" href="../styles/'''+css_style+'''" type="text/css">
         <style></style>
         <script src="../js_lib/sorttable.js"></script>
 
@@ -79,13 +80,15 @@ def generate_html(experiment_title, html_file, dataframe):
   
 if __name__ == "__main__":    
 
-    json_file, html_file = None, None
+    json_file, html_file, css_style = None, None, None
     experiment_title, measurements = None, None
     if len(sys.argv) < 3:
         print('Please provide\n1) a json file describing the experimet results to be reported and\n2) html output filename')
     else:
         json_file = sys.argv[1]
         html_file = sys.argv[2]
+    if len(sys.argv) >= 4:
+        css_style = ntpath.basename(sys.argv[3])
     
     with open(json_file) as f:
         data = json.load(f)
@@ -104,6 +107,7 @@ if __name__ == "__main__":
     results = pd.merge(media_results, measurements, left_on='measure_uid', right_on='measure_uid', how='outer')
     results.drop(['measure_uid'], axis=1, inplace=True)    
     
-    generate_html(experiment_title, html_file, results)
+    if css_style: generate_html(experiment_title, html_file, results, css_style)
+    else: generate_html(experiment_title, html_file, results)
     
     
