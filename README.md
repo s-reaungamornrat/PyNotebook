@@ -174,17 +174,4 @@ In cases that you have your own css style file in `./styles/` and want to use it
 > python html_report.py /path/to/input.json /path/to/report.html css_filename
 ```
 
-## Versioning
-
-Let's say its version is v0.0. 
-
-## Authors
-
-* **Sureerat Reaungamornrat** - *Initial work* <br/>
-To be added
-
-
-## Acknowledgments
-
-We acknowledge Sebustien Piat for his html report genertor which inspires this development... To be continue....
 
